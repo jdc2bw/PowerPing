@@ -1,0 +1,218 @@
+@charset "UTF-8";
+*{
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: #D6D1CA;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+   
+}
+
+/* styling the navbar */
+#NavBar{
+    background-color: rgb(18, 71, 52);
+    margin-top: 0;
+    height: fit-content;
+    object-fit: contain;
+}
+
+
+#NavBar .Logo{
+    object-fit: cover;
+    height: auto;
+    max-width: auto;
+    max-height: 48px;
+    padding-left: 2%;
+    
+}
+.TabButton{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    background-color: inherit;
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(209, 184, 136);
+    margin-left: 2%;
+}
+.TabButton:hover, .TabButton:active{
+    color: rgb(211,211,211);
+}
+#Name.TabButton{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-top: 5vh;
+    font-size: 30px;
+    margin-left: 10%;
+}
+#About_Button.TabButton{
+    margin-left: 5%;
+}
+@media(max-width: 1000px) and (min-width: 735px) {
+    .Logo{
+        padding-left: 0;
+    }
+    .TabButton{
+        margin-left: 2%;
+        font-size: 20px;
+    }
+    #Name.TabButton{
+        margin-left: 5%;
+        font-size: 25px;
+    }
+    #About_Button.TabButton{
+        margin-left: 3%;
+        font-size: 20px;
+    }
+}
+@media(max-width: 734px) and (min-width: 600px) {
+    .Logo{
+        padding-left: 0;
+    }
+    .TabButton{
+        margin-left: 2%;
+        font-size: 15px;
+    }
+    #Name.TabButton{
+        margin-left: 3%;
+        font-size: 20px;
+    }
+    #About_Button.TabButton{
+        margin-left: 2%;
+        font-size: 15px;
+    }
+}
+@media(max-width: 599px){
+    #Navbar, .Logo, .TabButton, #Name.TabButton, #About_Button.TabButton{
+        display: none;
+    }
+    #NavBar.solid{
+        display: none;
+    }
+}
+
+
+.block{
+    margin-left: 16.665%;
+    background-color: rgb(241, 241, 241);
+    color: black;
+    width: 20vw;
+    height: 15vw;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, .1);
+    border: 3px solid rgb(18, 71, 52);
+    border-radius: 10%;
+    margin-top: 5vh;
+}
+@media (min-width: 1321px){
+    .block{
+        margin-left: 5%;
+        width: 30vw;
+        height: 30vw;
+        font-size: 20px;
+    }
+}
+@media (min-width: 1141px) and (max-width: 1320px){
+    .block{
+        font-size: 15px;
+        margin-left: 5%;
+        width: 15vw;
+        height: 30vw;
+        font-size: 20px;
+}
+}
+@media (min-width: 992px) and (max-width: 1140px){
+    .block{
+        font-size: 15px;
+        margin-left: 5%;
+        width: 25vw;
+        height: fit-content;
+        font-size: 20px;
+    }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+    .block{
+        margin-left: 30%;
+        width: 30vw;
+
+        height: fit-content;
+        font-size: 20px;
+    }
+}
+@media (max-width: 767px) and (min-width: 600px){
+    .block{
+        margin-left: 25%;
+        width: 60vw;
+        height: fit-content;
+        font-size: 20px;
+    }
+}
+@media (max-width: 599px){
+    .block{
+        margin-left: 5%;
+        width: 90vw;
+        height: fit-content;
+        font-size: 20px;
+    }
+}
+.col{
+    margin: 0;
+    padding: 0;
+}
+.block > h1{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    padding-left: 1vw;
+    margin-bottom: 1;
+}
+.block > p{
+    text-wrap: wrap;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-top: 0;
+    margin-bottom: 1vh;
+}
+.block > p > a{
+    color: black;
+    text-decoration: underline;
+    color: rgb(209, 184, 136);
+}
+
+#BatteryInfo{
+    text-align: center;
+    clear:both;
+}
+
+/* styling the battery info section */
+@media (max-width: 767px){
+    #BatteryInfo > h1{
+        font-weight: bold;
+        text-align: center;
+        font-size: 1.2em;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    #BatteryInfo> h1{
+        font-weight: bold;
+        text-align: center;
+        font-size: 1.5em;
+    }
+}
+@media (min-width: 992px){
+    #BatteryInfo > h1{
+        font-weight: bold;
+        text-align: center;
+        font-size: 1.5em;
+    }
+    .job-picture{
+        width: 40vw;
+        height: auto;
+    }
+}
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PowerPing</title>
+        <meta charset="UTF-8">
+        {%block styles%}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="../static/styles/style.css">
+        {%endblock%}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="../static/JS/myScript.js"></script>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+    <!--nav bar-->
+    <div id="NavBar"> 
+        <img src="../static/logos/logo.png" class = "Logo" alt = "logo">
+        <a class = 'TabButton' id = 'Name'>PowerPing</a>
+        <a class = 'TabButton' href="/">Home</a>
+        <a class = 'TabButton' href="/Register">Register Battery</a>
+
+    </div>
+
+<!-- Registered Batteries -->
+    <section id="BatteryInfo">
+        <h1>Registered Batteries</h1>
+        <div class="container-fluid">
+            <div class="row" id="battery-container">
+                <!-- Batteries will be inserted here via AJAX -->
+                <p>Loading batteries...</p>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Function to refresh battery data from Flask
+        function refreshBatteries() {
+            $.ajax({
+                url: "/get_db_values",
+                type: "GET",
+                success: function (batteries) {
+                    let container = $("#battery-container");
+                    container.empty(); // Clear existing content
+
+                    batteries.forEach(battery => {
+                        let warningText = "None";
+                        let warningColor = "";
+                        if (battery.Warnings == 1) {
+                            warningText = "Please check this battery soon.";
+                            warningColor = "orange";
+                        } else if (battery.Warnings == 2) {
+                            warningText = "Please check this battery immediately.";
+                            warningColor = "red";
+                        }
+
+                        let batteryHTML = `
+                    <div class="col-lg-4 col-md-4 col-sm-12 col">
+                        <div class="block">
+                            <h1>${battery.Name}</h1>
+                            <p>ID: ${battery.ID}</p>
+                            <p>Warning: ${battery.Warnings == 0 ? "None" : battery.Warnings}</p>
+                            ${warningColor ? `<p style="color:${warningColor}">&#9888; ${warningText} &#9888;</p>` : ""}
+                            <p>Voltage: ${battery.Voltage}</p>
+                            <p>Time: ${battery.Time}</p>
+                            <p>RSSI: ${battery.RSSI}</p>
+                        </div>
+                    </div>`;
+                        container.append(batteryHTML);
+                    });
+                },
+                error: function () {
+                    $("#battery-container").html("<p>Failed to load battery data.</p>");
+                }
+            });
+        }
+
+        // Refresh every 5 seconds
+        setInterval(refreshBatteries, 1000);
+        refreshBatteries();
+    </script>    
+
+</body>
+</html>
